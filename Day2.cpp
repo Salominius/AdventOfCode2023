@@ -7,19 +7,16 @@ int main() {
   const uint8_t maxBlue = 14; 
 
   uint64_t part2 = 0;
-  uint16_t fewestPossibleRed = 0;
-  uint16_t fewestPossibleGreen = 0;
-  uint16_t fewestPossibleBlue = 0;
 
   std::vector<std::string> input = getInput("inputs/day2.txt");
 
   for (const std::string& line : input) {
-    //Part 2 variables per game:
+    // Part 2 variables per game:
     uint16_t fewestPossibleRed = 0;
     uint16_t fewestPossibleGreen = 0;
     uint16_t fewestPossibleBlue = 0;
 
-    //start at 5 to skip the "Game " part
+    // start at 5 to skip the "Game " part
     uint8_t i = 5;
 
     // parse the id
