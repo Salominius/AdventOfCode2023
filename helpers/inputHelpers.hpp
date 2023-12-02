@@ -19,6 +19,24 @@ vector<T> getInput(string inputPath) {
       while(input >> element)
         data.push_back(element);
     }
+    infile.close();
+  } else {
+    std::cout << "Unable to open file" << std::endl;
+  }
+
+  return data;
+}
+
+vector<string> getInput(string inputPath) {
+  vector<string> data;
+  ifstream infile(inputPath);
+  string line;
+
+  if(infile.is_open()) {
+    while(getline(infile, line)) {
+      data.push_back(line);
+    }
+    infile.close();
   } else {
     std::cout << "Unable to open file" << std::endl;
   }
