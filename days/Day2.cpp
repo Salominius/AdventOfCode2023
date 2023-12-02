@@ -1,4 +1,4 @@
-#include "helpers/inputHelpers.hpp"
+#include "../helpers/inputHelpers.hpp"
 #include <sstream>
 
 int main() {
@@ -9,7 +9,7 @@ int main() {
 
   int part2 = 0;
 
-  for (const std::string& line : getInput("inputs/day2.txt")) {
+  for (const std::string& line : getInput("../inputs/day2.txt")) {
     int fewestPossibleRed = 0;
     int fewestPossibleGreen = 0;
     int fewestPossibleBlue = 0;
