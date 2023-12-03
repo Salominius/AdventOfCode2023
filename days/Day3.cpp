@@ -12,14 +12,13 @@ bool isSymbol(const std::vector<std::string>& grid, int x, int y) {
 int isGear(const std::vector<std::string>& grid, int x, int y) {
   if (grid[y][x] != '*')
     return false;
-  int oneDigitAdjacent = 0;
+  int firstAdjecentDigit = 0;
   int startY = y > 0 ? y - 1 : y;
   int startX = x > 0 ? x - 1 : x;
   int endY = y < grid.size() - 1 ? y + 1 : y;
   int endX = x < grid[0].length() - 1 ? x + 1 : x;
   for (int i = startY; i <= endY; i++) {
-    int j = startX;
-    for (; j <= endX; j++) {
+    for (int j = startX; j <= endX; j++) {
       if (isdigit(grid[i][j])) {
         int number = 0;
         int decimal = 1;
@@ -35,10 +34,10 @@ int isGear(const std::vector<std::string>& grid, int x, int y) {
             number += grid[i][j] - '0';
           } else
             break;
-        if (oneDigitAdjacent)
-          return oneDigitAdjacent * number;
+        if (firstAdjecentDigit)
+          return firstAdjecentDigit * number;
         else
-          oneDigitAdjacent = number;
+          firstAdjecentDigit = number;
       }
     }
   }
