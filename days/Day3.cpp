@@ -93,6 +93,6 @@ int main() {
     y++;
   }
 
-  std::cout << "Part 1: " << part1 << std::endl; //2162
-  std::cout << "Part 2: " << part2 << std::endl; //72513
+  std::cout << "Part 1: " << part1 << std::endl; //528819
+  std::cout << "Part 2: " << part2 << std::endl; //80403602
 }
