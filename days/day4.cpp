@@ -38,9 +38,9 @@ int main() {
 
     //Part 2:
     cardID--; // 0-indexed
-    for (int i = 1; i <= amountWinning; i++) {
+    for (int i = 1; i <= amountWinning; i++)
       copies[cardID + i] += copies[cardID];
-    }
+    
     part2 += copies[cardID];
   }
 
