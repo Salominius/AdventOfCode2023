@@ -86,24 +86,37 @@ int main() {
       for (auto map : level) {
         int64_t seedStart = seedsPart2[i].start;
         int64_t seedEnd = seedsPart2[i].start + seedsPart2[i].length;
-        //If seedStart is in range, map part or whole:
-        if (seedStart >= map.sourceStart && seedStart < map.sourceStart + map.length) {
-          //If whole range can be mapped, do so:
-          if (seedEnd <= map.sourceStart + map.length)
-            seedsPart2[i].start = map.destinationStart + (seedsPart2[i].start - map.sourceStart);
-          //If only first half can be mapped, map first half and add second half as new seedRange:
-          else {
-            int64_t firstHalfLength = map.sourceStart + map.length - seedsPart2[i].start;
-            int64_t secondHalfLength = seedsPart2[i].length - firstHalfLength;
-            //Add second half as new seedRange
-            seedsPart2.push_back({seedsPart2[i].start + firstHalfLength, secondHalfLength});
-            //Map first half:
-            seedsPart2[i].start = map.destinationStart + (seedStart - map.sourceStart);
-            seedsPart2[i].length = firstHalfLength;
-          }
+        //seedRange is contained in mapRange, map whole:
+        if (seedStart >= map.sourceStart && seedEnd <= map.sourceStart + map.length) {
+          seedsPart2[i].start = map.destinationStart + (seedStart - map.sourceStart);
           break;
         }
-        //If seedEnd is in range, map part or whole:
+        //mapRange is contained in seedRange, map contained part:
+        else if (map.sourceStart >= seedStart && map.sourceStart + map.length <= seedEnd) {
+          //Split the seedRange:
+          int64_t leftSideLength = map.sourceStart - seedStart;
+          int64_t rightSideLength = seedEnd - (map.sourceStart + map.length);
+          //Add left side as new seedRange:
+          seedsPart2.push_back({seedStart, leftSideLength});
+          //Add right side as new seedRange:
+          seedsPart2.push_back({map.sourceStart + map.length, rightSideLength});
+          //Map middle:
+          seedsPart2[i].start = map.destinationStart;
+          seedsPart2[i].length = map.length;
+          break;
+        }
+        //seedStart is in range, seedEnd is not, map first half:
+        else if (seedStart >= map.sourceStart && seedStart < map.sourceStart + map.length) {
+          int64_t firstHalfLength = map.sourceStart + map.length - seedStart;
+          int64_t secondHalfLength = seedsPart2[i].length - firstHalfLength;
+          //Add second half as new seedRange
+          seedsPart2.push_back({seedStart + firstHalfLength, secondHalfLength});
+          //Map first half:
+          seedsPart2[i].start = seedStart + map.destinationStart - map.sourceStart;
+          seedsPart2[i].length = firstHalfLength;
+          break;
+        }
+        //seedEnd is in range, seedStart is not, map second half:
         else if (seedEnd > map.sourceStart && seedEnd < map.sourceStart + map.length) {
           //Split the range:
           int64_t firstHalfLength = map.sourceStart - seedStart;
@@ -113,20 +126,6 @@ int main() {
           //Map second half:
           seedsPart2[i].start = map.destinationStart;
           seedsPart2[i].length = secondHalfLength;
-          break;
-        }
-        //if range is between seedStart and seedEnd, map middle:
-        else if (seedStart < map.sourceStart && seedEnd > map.sourceStart + map.length) {
-          //Split the range:
-          int64_t leftSideLength = map.sourceStart - seedStart;
-          int64_t rightSideLength = seedEnd - (map.sourceStart + map.length);
-          //Add first half as new seedRange:
-          seedsPart2.push_back({seedStart, leftSideLength});
-          //Add second half as new seedRange:
-          seedsPart2.push_back({map.sourceStart + map.length, rightSideLength});
-          //Map middle:
-          seedsPart2[i].start = map.destinationStart;
-          seedsPart2[i].length = map.length;
           break;
         }
       }
