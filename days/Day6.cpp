@@ -1,4 +1,5 @@
 #include "../helpers/inputHelpers.hpp"
+#include "../helpers/lists.hpp"
 #include <sstream>
 #include <math.h>
 
@@ -39,17 +40,8 @@ int main() {
     part1 *= getNumberOfWaysToWin(times[i], highscores[i]);
 
   //Get input for Part 2:
-  std::string totalTimeString, highscoreString;
-
-  for (char c : input[0].substr(5))
-    if (c != ' ')
-      totalTimeString += c;
-  double totalTime = std::stod(totalTimeString);
-
-  for (char c : input[1].substr(9))
-    if (c != ' ')
-      highscoreString += c;
-  double highscore = std::stod(highscoreString);
+  double totalTime = std::stod(join(times, ""));
+  double highscore = std::stod(join(highscores, ""));
 
   //Part 2:
   part2 = getNumberOfWaysToWin(totalTime, highscore);
