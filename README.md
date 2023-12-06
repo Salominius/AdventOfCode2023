@@ -1,5 +1,5 @@
-![](https://img.shields.io/badge/stars%20⭐-10-yellow)
-![](https://img.shields.io/badge/days%20completed-5-blue)
+![](https://img.shields.io/badge/stars%20⭐-12-yellow)
+![](https://img.shields.io/badge/days%20completed-6-blue)
 # AdventOfCode2023
 My approach on Advent Of Code this year using C++17
 
