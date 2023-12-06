@@ -56,5 +56,5 @@ int main() {
   part2 = getNumberOfWaysToWin(totalTime, highscore);
 
   std::cout << "Part 1: " << part1 << std::endl; //741000
-  std::cout << "Part 2: " << part2 << std::endl; //
+  std::cout << "Part 2: " << part2 << std::endl; //38220708
 }
