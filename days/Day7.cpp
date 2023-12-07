@@ -61,6 +61,7 @@ int getHandTypePart2(string hand) {
   if (jokers >= 4)
     return 6; // 5 of a kind
   
+  // This logic is based on the knowledge that we have at least one joker:
   switch(cards.size()) {
     case 4: 
       return 1; // nothing becomes one pair
@@ -108,11 +109,9 @@ int main() {
   int part1 = 0;
   int part2 = 0;
 
-  std::vector<std::string> input = getInput("../inputs/day7.txt");
-
+  // Read input
   std::vector<Hand> hands;
-
-  for (const string& line : input) {
+  for (const string& line : getInput("../inputs/day7.txt")) {
     std::string hand = line.substr(0, line.find(" "));
     int type = getHandType(hand);
     int bid = stoi(line.substr(line.find(" ") + 1));
