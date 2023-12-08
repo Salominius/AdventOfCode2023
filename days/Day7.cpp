@@ -4,7 +4,7 @@
 #include <map>
 
 struct Hand {
-  std::string cards;
+  string cards;
   int type;
   int bid;
 };
@@ -43,7 +43,7 @@ int getHandType(string hand) {
 }
 
 int getHandTypePart2(string hand) {
-  if (hand.find("J") == std::string::npos)
+  if (hand.find("J") == string::npos)
     return getHandType(hand); // no jokers
   
   std::map<char, size_t> cards;
@@ -83,7 +83,7 @@ int getHandTypePart2(string hand) {
   return -1; // error
 }
 
-bool compareHands(Hand a, Hand b, std::string ranking) {
+bool compareHands(Hand a, Hand b, string ranking) {
   if (a.type != b.type)
     return a.type < b.type;
 
@@ -112,7 +112,7 @@ int main() {
   // Read input
   std::vector<Hand> hands;
   for (const string& line : getInput("../inputs/day7.txt")) {
-    std::string hand = line.substr(0, line.find(" "));
+    string hand = line.substr(0, line.find(" "));
     int type = getHandType(hand);
     int bid = stoi(line.substr(line.find(" ") + 1));
     hands.push_back({hand, type, bid});
