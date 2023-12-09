@@ -12,17 +12,12 @@ int main() {
 
   for (vector<int>& sequence : sequences) {
     bool allZero = false;
-    bool minus = false;
+    int sign = 1;
     while (!allZero) {
       //Calculate new first/last
       part1 += sequence.back();
-      if (minus){
-        part2 -= sequence.front();
-        minus = false;
-      } else {
-        part2 += sequence.front();
-        minus = true;
-      }
+      part2 += sequence.front() * sign;
+      sign *= -1;
 
       //Calculate new sequence
       allZero = true;
