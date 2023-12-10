@@ -111,7 +111,7 @@ int main() {
 
   // Read input
   std::vector<Hand> hands;
-  for (const string& line : getInput("../inputs/day7.txt")) {
+  for (const string& line : getInput("../inputs/day07.txt")) {
     string hand = line.substr(0, line.find(" "));
     int type = getHandType(hand);
     int bid = stoi(line.substr(line.find(" ") + 1));

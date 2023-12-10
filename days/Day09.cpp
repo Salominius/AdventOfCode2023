@@ -7,7 +7,7 @@ int main() {
   int part2 = 0;
 
   std::vector<std::vector<int>> sequences = {};
-  for (const string& line : getInput("../inputs/day9.txt"))
+  for (const string& line : getInput("../inputs/day09.txt"))
     sequences.push_back(split(line, ' '));
 
   for (vector<int>& sequence : sequences) {

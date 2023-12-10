@@ -20,7 +20,7 @@ int main() {
   int part1 = 1;
   int part2 = 0;
 
-  std::vector<std::string> input = getInput("../inputs/day6.txt");
+  std::vector<std::string> input = getInput("../inputs/day06.txt");
   
   //Get input for Part 1:
   std::vector<int> times;

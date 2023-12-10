@@ -7,7 +7,7 @@ int main() {
   int part1 = 0;
   int part2 = 0;
 
-  std::vector<std::string> input = getInput("../inputs/day4.txt");
+  std::vector<std::string> input = getInput("../inputs/day04.txt");
 
   const int amountOfCards = input.size();
   int copies[amountOfCards];

@@ -4,7 +4,7 @@ int main() {
   uint64_t part1 = 0;
   uint64_t part2 = 0;
 
-  std::vector<std::string> input = getInput("../inputs/day1.txt");
+  std::vector<std::string> input = getInput("../inputs/day01.txt");
 
   for (const std::string& line : input) {
     //Part 1

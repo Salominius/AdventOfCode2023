@@ -62,7 +62,7 @@ int main() {
   int64_t part1 = 0;
   int64_t part2 = 0;
 
-  std::vector<std::string> input = getInput("../inputs/day5.txt");
+  std::vector<std::string> input = getInput("../inputs/day05.txt");
   std::vector<std::vector<Map>> maps = getMaps(input);
 
   //Part 1:

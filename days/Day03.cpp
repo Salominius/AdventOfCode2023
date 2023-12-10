@@ -48,7 +48,7 @@ int main() {
   int part1 = 0;
   int part2 = 0;
 
-  std::vector<std::string> input = getInput("../inputs/day3.txt");
+  std::vector<std::string> input = getInput("../inputs/day03.txt");
 
   int x, y = 0;
   for (const std::string& line : input) {

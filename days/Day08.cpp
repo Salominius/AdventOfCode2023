@@ -9,7 +9,7 @@ int main() {
   uint64_t part2 = 0;
 
   // Read input
-  std::vector<string> input = getInput("../inputs/day8.txt");
+  std::vector<string> input = getInput("../inputs/day08.txt");
   string instructions = input[0];
 
   std::map<string, std::pair<string, string>> rules;
