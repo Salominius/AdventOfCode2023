@@ -1,6 +1,7 @@
 #include "../helpers/inputHelpers.hpp"
 #include "../helpers/lists.hpp"
 #include "../helpers/math.hpp"
+#include <tuple>
 
 enum Direction { UP, RIGHT, DOWN, LEFT };
 
@@ -69,21 +70,22 @@ int main() {
     if (pipe == '|' || pipe == 'J' || pipe == 'F')
       direction = DOWN;
   }
-  // At least 2 pipes have to end in S, so by checking 3/4 directions we can be certain to have found 1 valid pipe
+  // At least 2 pipes have to end in S, so by checking 3/4 directions we can be certain to have found a valid pipe
+  
   size_t steps = 1;
-  auto[x, y] = getNextPosition(startX, startY, direction);
+  auto[x, y] = getNextPosition(startX, startY, direction); // x, y are now the position of the first pipe
+  pipe = grid[y][x];
+
+  // Follow the pipe until we reach the end
   while (pipe != 'S') {
     steps++;
-    pipe = grid[y][x];
     direction = getNextDirection(pipe, direction);
-    auto newPos = getNextPosition(x, y, direction);
-    x = newPos.first;
-    y = newPos.second;
+    std::tie(x, y) = getNextPosition(x, y, direction);
+    pipe = grid[y][x];
   }
-  steps++; // We have to count the last step to S
 
-  part1 = steps/2;
+  part1 = steps;
   
-  std::cout << "Part 1: " << part1 << std::endl; //
+  std::cout << "Part 1: " << part1 << std::endl; //6725
   std::cout << "Part 2: " << part2 << std::endl; //
 }
