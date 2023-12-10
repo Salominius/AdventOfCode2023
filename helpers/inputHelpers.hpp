@@ -43,3 +43,21 @@ vector<string> getInput(string inputPath) {
 
   return data;
 }
+
+vector<vector<char>> getInputGrid(string inputPath) {
+  vector<vector<char>> data;
+  ifstream infile(inputPath);
+  string line;
+
+  if(infile.is_open()) {
+    while(getline(infile, line)) {
+      vector<char> row(line.begin(), line.end());
+      data.push_back(row);
+    }
+    infile.close();
+  } else {
+    std::cout << "Unable to open file" << std::endl;
+  }
+
+  return data;
+}
