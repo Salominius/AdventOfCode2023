@@ -67,7 +67,7 @@ int main() {
   }
   if (startY < grid.size() - 1) {
     pipe = grid[startY + 1][startX];
-    if (pipe == '|' || pipe == 'J' || pipe == 'F')
+    if (pipe == '|' || pipe == 'J' || pipe == 'L')
       direction = DOWN;
   }
   // At least 2 pipes have to end in S, so by checking 3/4 directions we can be certain to have found a valid pipe
